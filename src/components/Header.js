@@ -1,5 +1,5 @@
-import React, { useState,useEffect} from "react";
-import { Box, Grid, makeStyles, TextField,Button,Typography} from "@material-ui/core";
+import React from "react";
+import { Box, Grid, makeStyles} from "@material-ui/core";
 import Search from './SearchBar'
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -13,18 +13,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header(props) {
-  useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("suggestion"));
-    if(!items){
-      localStorage.setItem("suggestion",JSON.stringify(['cat']))
-    }
-  }, [])
   const classes = useStyles();
   return (
-    <Grid container justify="center">
-      <Grid item xs={4}>
-        <Box className={classes.wrapper} mt={-3}>
-          <Search placeholder="Enter a Book Name..." values={props.data} />
+    <Grid container justifyContent="center">
+      <Grid item> 
+        <Box className={classes.wrapper} mt={-8}>
+          <Search placeholder="Search Photo..." values={props.data} />
         </Box>
       </Grid>
     </Grid>
